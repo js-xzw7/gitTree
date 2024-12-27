@@ -1,0 +1,12 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+
+message AnchorTreasureChestResponse {
+  string userId = 1;// 中奖用户Id
+  string  nickname = 2; //昵称
+  string  avatar = 3; //头像
+  int64 no = 4;// 中奖道具
+  int64 day = 5;// 中间道具天数
+}

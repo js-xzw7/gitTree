@@ -1,0 +1,233 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+enum ModelType{
+  MODEL_TYPE_DEFAULT = 0; //阵营模式
+  //  MODEL_TYPE_GUEST = 1;    //访客模式
+  //  MODEL_TYPE_TOKEN = 2;   //密钥登录
+}
+
+//------------------------------------创建模式----------
+//创建模式请求
+message CreateModelRequest {
+  int32 model_type = 1; // 创建模式 1:默认模式;2:组合模式;3:结婚模式
+  int32 model_category = 2; // 创建模式 1:默认模式;2:无限模式
+  int32 question_bank = 3;  // 题库， 0=随机or其他1~5
+}
+
+//登录响应
+message CreateModelResponse {
+  int64 model_id = 1; //模式id
+}
+
+//------------------------------------结束模式----------
+//创建模式请求
+//message EndModelRequest {
+//  int64 model_id = 1; // 创建模式 1:默认模式
+//}
+
+//message EndModelRequest {
+//  int64 model_id = 1; // 创建模式 1:默认模式
+//  repeated EndModelRequestItem list = 2; //
+//  repeated EndModelSpecialEffectsItem listSpecialEffects = 3; //特效列表
+//  repeated EndModelCombinationRequestItem EndModelCombination = 4; //组合列表
+//}
+//message EndModelCombinationRequestItem {
+//  string uid_active = 1; //主动at人的id
+//  string uid_passive = 2; //主动at人的id
+//  int64 active_score = 3; //积分
+//  int64 passive_score = 4; //积分
+//  int64 total_score = 5; //总积分
+//}
+//message EndModelRequestItem {
+//  string uid_id = 1; //用户id
+//  int64 score = 2; //积分
+//  int64 experience = 3; //经验值
+//}
+//message EndModelSpecialEffectsItem {
+//  string uid_id = 1; //用户id
+//  repeated int64 special_effects_id = 2; //特效id数组
+//}
+//
+////登录响应,返回世界排名
+//message EndModelResponse {
+//  repeated EndModelItem list = 1; //
+//  repeated EndModelCpItem listCp = 2; //
+//}
+//
+//message EndModelItem {
+//  string uid_id = 1; //模式id
+//  int32 rank_num = 2; //世界排名
+//}
+//
+//
+//message EndModelCpItem {
+//  string uid_active = 1; //主动at人的id
+//  string uid_passive = 2; //主动at人的id
+//  int32 rank_num = 3; //世界排名
+//  int32 last_rank_num = 4; //世界排名
+//}
+
+//模式结束协议
+message EndModelRequest {
+  int64 model_id = 1; // 模式id 1:默认模式
+  int64 model_category = 2; // 创建模式 1:有限模式;2:无限模式
+}
+message EndModelResponse {
+}
+
+
+//组合
+message RequestRankByIdCombinationRankRequestItem {
+  string uid_active = 1; //主动at人的id
+  string uid_passive = 2; //at人的id
+}
+//获取近七天世界排名的用户id
+//message RequestRankByIdRequestItem {
+//  string uid_id = 1; //用户id
+//}
+//模式结束排名
+message RequestRankByIdRequest {
+  repeated string list = 1; //
+  repeated RequestRankByIdCombinationRankRequestItem end_model_rank_combination = 2; //组合列表
+}
+//登录响应,返回世界排名
+message RequestRankByIdResponse {
+  repeated RequestRankByIdRankItem list = 1; //
+  repeated RequestRankByIdRankCpItem list_cp = 2; //
+}
+
+message RequestRankByIdRankItem {
+  string uid_id = 1; //模式id
+  int32 rank_num = 2; //世界排名
+}
+message RequestRankByIdRankCpItem {
+  string uid_active = 1; //主动at人的id
+  string uid_passive = 2; //主动at人的id
+  int32 rank_num = 3; //世界排名
+  //  int32 last_rank_num = 4; //世界排名
+}
+
+
+
+//补特效协议
+message AddSpecialEffectsItem {
+  string uid_id = 1; //用户id
+  repeated int64 special_effects_id = 2; //特效id数组
+}
+message AddSpecialEffectsRequest {
+  repeated AddSpecialEffectsItem add_special_effects_item = 1; //特效列表
+}
+message AddSpecialEffectsResponse {
+}
+
+
+//回合同步
+message AsyncInfinityDataRequest {
+  int64 model_id = 1; // 创建模式 1:默认模式
+  repeated AsyncInfinityDataRequestItem list = 2; //单人的
+  int64 model_category = 3; // 创建模式 1:有限模式;2:无限模式
+  repeated AsyncInfinityDataCombinationRequestItem combination_list = 4; //组合列表
+  repeated AsyncInfinityDataRequestCurrentItem current_list = 5; //当前的性别和当前套装
+}
+message AsyncInfinityDataCombinationRequestItem {
+  string uid_active = 1; //主动at人的id
+  string uid_passive = 2; //主动at人的id
+  int64 active_score = 3; //积分
+  int64 passive_score = 4; //积分
+  int64 total_score = 5; //总积分
+  int32  on_camp = 6; //所属阵营;1:左方阵营;2:右方阵营
+}
+message AsyncInfinityDataRequestItem {
+  string uid_id = 1; //用户id
+  int64 score = 2; //积分
+}
+
+
+message AsyncInfinityDataRequestCurrentItem {
+  string uid_id = 1; //用户id
+  int32  sex = 2; //性别;1:男;2:女
+  repeated int64 current_element_nos = 8; //当前穿搭
+  int64 title_no = 9; //当前称号
+  int64 emotions_no = 10; //当前心情
+  int64 toy = 11; // 当前玩具
+}
+
+
+message AsyncInfinityDataResponse {
+}
+
+
+
+
+//cp,和之前的cp一样
+message CpLinkRequest {
+  int64 model_id = 1; // 创建模式 1:默认模式
+  string user_id = 2; // 用户id
+  string user_id_other = 3; // 用户id
+}
+message CpLinkResponse {
+}
+
+//解散cp
+message CpBreakRequest {
+  int64 model_id = 1; // 创建模式 1:默认模式
+  string user_id = 2; // 用户id
+  string user_id_other = 3; // 用户id
+}
+message CpBreakResponse {
+}
+
+
+//结婚,服务端要发送一个全服公告，恭喜XXX和XXX 喜结连理、永结同心(10s)，结婚后，赠送情侣套装，丢在私有库（individual_pool_suit_ids）
+message MarrySuccessRequest {
+  int64 model_id = 1; // 创建模式 1:默认模式
+  string user_id = 2; // 用户id
+  string user_id_other = 3; // 用户id
+  bool is_suc = 4;  //是否结婚成功
+  int64 score = 5;  // 分数
+}
+message MarrySuccessResponse {
+  string user_id = 1; // 用户id
+  string user_id_other = 2; // 用户id
+}
+
+message MarryCompensateDressLevelResponse {
+  int64 GiftNum = 1; //礼物数量
+}
+
+//离婚和取掉订婚共用接口，    1. 增加【挚友】面板，主播点击后可查看目前处于【至臻挚友】状态的用户，点击分开后，需用户双方输入“88”，即可进行离婚操作
+message MarryBreakRequest {
+  int64 model_id = 1; // 创建模式 1:默认模式
+  string user_id = 2; // 用户id
+  string user_id_other = 3; // 用户id
+  int32 marry_type = 4; // 0:代表取消订婚；1：代表离婚
+}
+message MarryBreakResponse {
+  bool is_suc = 1;
+  string user_id = 2; // 用户id
+  string user_id_other = 3; // 用户id
+}
+
+//订婚
+message BookingMarryResponse {
+  string user_id = 1; // 用户id
+  string user_id_other = 2; // 用户id
+}
+
+
+//补特效协议
+message NewAddSpecialEffectsItem {
+  string uid_id = 1; //用户id
+  message SpecialEffectsItem{
+    int64 special_effects_id = 1; //特效id
+    int64 special_effects_num = 2; //特效数量
+  }
+  repeated SpecialEffectsItem list = 2;
+}
+message NewAddSpecialEffectsRequest {
+  repeated NewAddSpecialEffectsItem add_special_effects_item = 1; //特效列表
+}
+message NewAddSpecialEffectsResponse {
+}

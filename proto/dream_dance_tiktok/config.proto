@@ -1,0 +1,79 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+
+message DanceSuitListItem {
+   int64  suit_id = 1; //套装id
+   int32  sex = 2; //0是男，1是女
+   repeated int64  element_id = 3; //元素id
+}
+
+//等级返回
+message DanceLevelRequest {
+}
+
+//套装基础列表
+message DanceLevelResponse {
+  //base 全部套装，部分，公共，个人等。。
+  repeated DanceSuitListItem  base_all_suit = 1; //全量套装，库里面的全部套装取出，组装进去
+  repeated int64  public_pool_man_suit = 2; // 公共池的男性套装id
+  repeated int64  public_pool_woman_suit = 3; //公共池的女性套装id
+  repeated DanceElementLocalItem elementList = 4; //元素对应的部位信息
+  repeated int64  activities_pool_man_suit = 5; // 活动池的男性套装id
+  repeated int64  activities_pool_woman_suit = 6; //活动池的女性套装id
+
+  repeated int64  compose_pool_man_suit = 7; // 组合男性套装id
+  repeated int64  compose_pool_woman_suit = 8; //组合女性套装id
+}
+
+message DanceElementLocalItem {
+  int64  dance_element_no = 1; //散装编码
+  repeated int64 element_local_s = 2; //散装部位数据
+}
+
+
+
+
+
+//光环按钮
+message DanceHaloButtonRequest {
+}
+//套装基础列表
+message DanceHaloButtonResponse {
+  bool  is_open = 1; //false:关闭;true:打开
+  string  icon = 2; //url地址
+}
+
+//光环按钮
+message DanceHaloRulesRequest {
+}
+//套装基础列表
+message DanceHaloRulesResponse {
+  int64  begin_time = 1; //开始时间
+  int64  end_time = 2; //结束时间
+  string  desc = 3; //活动说明
+  repeated DanceHaloRulesItem list = 4; //散装部位数据
+}
+
+message DanceHaloRulesItem {
+  int64  score = 1; //星光值
+  string  name = 2; //光环名字
+  string  url = 3; //光环图片地址
+  int32 day_number = 4; //有效天数
+}
+
+
+message DanceHaloRankRequest {
+  int32 number = 1; //
+}
+//获取排名前多少的用户
+message DanceHaloRankResponse {
+  repeated DanceHaloRankItem list = 1; //
+}
+message DanceHaloRankItem {
+  int64  total_score = 1; //累计积分
+  int32  world_rank = 2;
+  string  nickname = 3; //昵称
+  string  avatar = 4; //头像
+}

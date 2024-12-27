@@ -1,0 +1,59 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+
+
+//回合创建请求
+message ReconnectRequest {
+  int64 room_id = 1; //游戏直播间id，防止后期网络问题，断线重连的时候用
+}
+
+//回合创建响应
+message ReconnectResponse {
+
+}
+
+
+//----------------------------------------------回合创建请求--------------------------
+
+//回合创建请求
+message RoundCreateRequest {
+//  string room_id = 1; //游戏直播间id，防止后期网络问题，断线重连的时候用
+  int64 model_id = 1; //模式id
+}
+
+//回合创建响应
+message RoundCreateResponse {
+  int64 round_id = 1; //回合id
+//  int64  problem_id = 2; //问题id
+    string problem_content = 2; //问题内容
+    string problem_answer_a = 3; //问题内容
+    string problem_answer_b = 4; //问题内容
+    int32  problem_right = 5; //0:A对;1:B对
+}
+
+
+
+//----------------------------------------------回合结束请求--------------------------
+//回合结束响应
+message RoundEndRequest {
+  int64 round_id = 1; //回合id
+  bool is_last = 2; //是否是最后一题，true是的，false不是
+}
+
+message RoundEndItem {
+  int64 round_id = 1; //回合id
+  int64 teams_id = 2; //回合id
+  int64 teams_score = 3; //星光值
+}
+
+message RoundEndResponse {
+}
+//----------------------------------------------排行榜--------------------------
+
+
+
+
+
+

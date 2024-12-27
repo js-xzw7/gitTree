@@ -1,0 +1,48 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+// 获取每日商店协议
+message GetStore {
+}
+message GetStoreResponse {
+  string storeId = 1;
+  int64 refreshNum = 2; // 剩余刷新次数
+  repeated StoreItem items = 3;// 商店列表
+  int64 nextAutoRefreshTime = 4;// 下一次自动刷新时间
+}
+
+message StoreItem {
+  int64 Id = 1;
+  int64 no = 2; // 道具no
+  string giftId = 3; //礼物Id
+  int64 clientTranslationId = 4; // 礼物id
+  int64 giftNum = 5; // 礼物数量
+}
+
+message StoreOther {
+}
+
+message StoreOtherResponse {
+  string storeId = 1;
+  int64 refreshNum = 2; // 剩余刷新次数
+  int64 nextAutoRefreshTime = 3; // 下一次自动刷新时间
+}
+
+// 刷新商店
+message RefreshStore {
+}
+message RefreshStoreResponse {
+  string storeId = 1;
+  int64 refreshNum = 2; // 剩余刷新次数
+  repeated StoreItem items = 3;// 商店列表
+  int64 nextAutoRefreshTime = 4;// 下一次自动刷新时间
+}
+
+// 推送商店购买信息
+message StorePush {
+  string userId = 1; // 用户id
+  int64 no = 2; // 道具no
+  int64 hour = 3; // 时效
+  int64 buyTime = 4; // 购买时间
+}

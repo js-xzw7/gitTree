@@ -1,0 +1,110 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+
+//获取旅行规则（抽奖活动规则）
+message LuckyDrawRuleRequest {
+}
+message LuckyDrawRuleResponse {
+  repeated DrawRuleItem DrawRule = 1; //
+  repeated DrawShowItem DrawShow = 2; //
+  int64  start_time = 3;
+  int64  end_time = 4;
+}
+
+//message DrawRuleItem {
+//  int64 element_no = 1; //散件编号
+//  int32 element_number = 2; //散件数量
+//  int32 element_give_number = 3; //赠送数量
+//}
+message DrawRuleItem {
+//  int64 element_no = 1; //散件编号
+  int32 number = 1; //抽奖数量
+  int32 give_number = 2; //赠送数量
+}
+
+
+message DrawShowItem {
+  int32  draw_type = 1; //1:道具;2:星光值
+  int64 element_no = 2; //散件编号
+  string element_proportion = 3; //百分比的值，
+}
+
+
+//根据元素id批量获取元素详情
+message ElementInfoRequest {
+  repeated int64 element_nos = 1; //
+
+}
+//获取排名前多少的用户
+message ElementInfoResponse {
+  repeated ElementInfoItem List = 1; //
+}
+message ElementInfoItem {
+  int64 element_no = 1; //元素编号编号
+  string icon = 2; //元素图片
+  string name = 3; //元素名字
+}
+
+
+
+
+
+
+//幸运记录(用户获得的奖品)
+message LuckyDrawRecordResponse {
+  repeated LuckyDrawRecordItem List = 2; //
+}
+message LuckyDrawRecordItem {
+  string userId = 1; //用户id
+  repeated LuckyDrawDetailItem List = 2; //
+}
+message LuckyDrawDetailItem {
+  int32  draw_type = 1; //1:道具;2:星光值
+  int64 element_no = 2; //元素编号编号
+  int32 effective_time = 3; //有效时间，小时为单位
+  int64 add_time = 4; //发放时间，秒为单位
+  int64  score = 5; //星光值
+  int32  tag = 6; //1:s;2:a;3:b;4:c
+}
+
+//我的道具 （个人背包）
+message BagRequest {
+  string userId  = 1; //
+}
+
+message BagResponse {
+  string UserId  = 1; //
+  repeated BagItem List = 2; //
+}
+message BagItem {
+  int64 element_no = 1; //元素编号编号
+  int64 end_time = 2; //到期时间，秒为单位
+}
+
+
+
+
+
+message ElementGiveRequest {
+  repeated int64 element_no = 1; //服饰编号
+  string user_id  = 3 ; //赠送人
+  string user_id_other  = 4 ; //收礼人
+}
+
+message ElementGiveResponse {
+  string user_id  = 1; //
+  string msg  = 2; //
+  int32 err_code  = 3; //错误码不等于0，代表失败，弹出msg;0就是成功
+}
+
+message UserLuckyDrawRecordRequest {
+  string userId = 1; //用户id
+}
+
+//查询用户近200条抽奖记录
+message UserLuckyDrawRecordResponse {
+  string userId = 1; //用户id
+  repeated LuckyDrawDetailItem List = 2; //
+}

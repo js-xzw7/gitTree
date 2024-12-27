@@ -1,0 +1,9 @@
+{
+  "Version":"1.1.2",
+  "Name":"GameServer",
+  "WorkerPoolSize":64,
+  "LogDebugClose":true,
+  "MaxPacketSize": 8192,
+  "MaxMsgChanLen": 32,
+  "HeartbeatMax":60
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+// 抽奖接口
+message DrawRequest{
+  int64  Num = 1;
+  string SecOpenid = 2;
+  string Nickname = 3;
+  string AvatarUrl = 4;
+}
+
+message BarrageSend {
+  string Timestamp = 1;
+  string RoomId = 2;
+  string MsgType = 3;
+  string BodyStr = 4;
+}
+
+message BarrageSendResponse {
+
+}

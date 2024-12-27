@@ -1,0 +1,43 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+message ConfirmFriend {
+  string user_id = 1 ; //发送人
+  string user_id_other = 2; //建立人
+  int64 relationship = 3; //关系ship;1:关系建立中;2:兄弟;3:姐妹;4:死党;5:闺蜜;6:姐弟;7:兄妹
+}
+
+message ConfirmFriendResp {
+  string user_id = 1 ; //发送人
+  string user_id_other = 2; //建立人
+  int64 relationship = 3; //关系ship;1:关系建立中;2:兄弟;3:姐妹;4:死党;5:闺蜜;6:姐弟;7:兄妹
+  int64 created_at = 4; // 建立时间
+}
+
+message UnFriend {
+  string user_id = 1 ; //发送人
+  string user_id_other = 2; //建立人
+}
+
+
+message UnFriendResp {
+  string user_id = 1 ; //发送人
+  string user_id_other = 2; //建立人
+  int64 un_friend_at = 3; // 解除时间
+}
+
+message FriendChange {
+  string user_id = 1 ; //发送人
+  string user_name = 2; //发送人名称
+  string user_avatar = 3; //发送人头像
+  string user_id_other = 4; //建立人
+  string user_name_other = 5; //建立人名称
+  string user_avatar_other = 6; //建立人头像
+  int64 relationship = 7; //关系ship;0:关系删除;1:关系建立中;2:兄弟;3:姐妹;4:死党;5:闺蜜;6:姐弟;7:兄妹
+  int64 created_at = 8; // 建立时间
+}
+
+message FriendChangeResp {
+  repeated FriendChange user_list = 1;
+}

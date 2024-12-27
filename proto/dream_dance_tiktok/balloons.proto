@@ -1,0 +1,47 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+
+
+//创建模式钱调用
+message UserBalloonsRequest {
+  int64 model_id = 1; //模式id
+}
+
+//
+message UserBalloonsResponse {
+  int64 can_use_balloons_number = 1; //可用气球数量
+  map<int64,int64> list = 2; //
+  int64 current_time = 3; //
+}
+
+
+
+//拉取一个气球，客户端创建一个气球
+message GetBalloonsRequest {
+  int64 model_id = 1; //模式id
+}
+
+//回合创建响应
+message GetBalloonsResponse {
+  int64 balloons_id = 1;
+}
+
+//一次性调用，气球炸裂时调用
+message BalloonsEndRequest {
+  int64 model_id = 1; //气球id
+  int64 balloons_id = 2; //气球id
+  repeated BalloonsEndItem list = 3; //
+}
+message BalloonsEndItem {
+  string uid_id = 1; //用户id
+  int64 score = 2; //星光值
+  int64 score_balloons = 3; //用户的气球贡献值
+}
+//回合创建响应
+message BalloonsEndResponse {
+}
+
+
+

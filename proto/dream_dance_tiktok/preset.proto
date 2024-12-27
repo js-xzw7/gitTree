@@ -1,0 +1,22 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+
+message SavePresetRequest{
+  string preset = 1; //预设
+  string uid_id = 2; //用户Id
+}
+
+message SavePresetResponse {
+  string uid_id = 1; // 用户Id
+}
+
+
+message SaveBadgeRequest{
+  string userId = 1; // 用户id
+  repeated int64 badge = 2; // 用户徽章列表
+}
+
+message SaveBadgeResponse {
+}

@@ -1,0 +1,25 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+//解散知己
+message SoulMateCancelRequest {
+  string user_id = 1; // 用户id
+  string user_id_other = 2; // 用户id
+}
+message SoulMateCancelResponse {
+  string user_id = 1; // 用户id
+  string user_id_other = 2; // 用户id
+}
+
+//解散死党
+message BestFriendsCancelRequest {
+  string user_id = 1; // 用户id
+  string user_id_other = 2; // 用户id
+}
+
+//解散死党
+message BestFriendsCancelResponse {
+  string user_id = 1; // 用户id
+  string user_id_other = 2; // 用户id
+}

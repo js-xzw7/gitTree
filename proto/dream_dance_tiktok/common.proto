@@ -1,0 +1,14 @@
+//协议公共结构模块
+
+syntax = "proto3";
+import "errorCode.proto";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+message Response {
+  ErrorCode code = 1;   //网络码
+  int32     business_error_code  = 2; //业务码
+  bytes     data = 3;
+}
+
+

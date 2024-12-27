@@ -1,0 +1,103 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+
+//获取小丑状态协议
+message GetBuffoonStatusRequest {
+  int64 model_id = 1; //模式id
+}
+message GetBuffoonStatusResponse {
+  int32 can_use_buffoon  = 1; //1:小丑活动下架;2:可以召唤小丑;3:召唤过，不能再次召唤
+  string  fight_buffoon_id = 2; //打小丑的id
+  int64  last_get_buffoon_time = 3; //上次召唤小丑的时间
+}
+
+
+//今天的用户排行榜
+message TodayBuffoonRankRequest {
+  int32 number = 1; //前多少名
+}
+
+//获取今天排名前多少的用户
+message TodayBuffoonRankResponse {
+  repeated TodayBuffoonRankItem list = 1; //
+}
+message TodayBuffoonRankItem {
+  int64  total_score = 1; //用户累计积分
+  int32  world_rank = 2; //用户的排名
+  string  nickname = 3; //用户昵称
+  string  avatar = 4; //头像
+}
+
+
+//昨天用户瓜分前百分之10的榜单
+message SplitBuffoonRankRequest {
+  int32 number = 1; //前多少名
+}
+
+message SplitBuffoonRankResponse {
+  repeated SplitBuffoonRankItem list = 1; //
+}
+message SplitBuffoonRankItem {
+  int64  total_score = 1; //用户累计积分
+  int32  world_rank = 2; //用户的排名
+  string  nickname = 3; //用户昵称
+  string  avatar = 4; //头像
+}
+
+
+
+//今天小丑总积分
+message TodayBuffoonTotalScoreRequest {
+}
+
+message TodayBuffoonTotalScoreResponse {
+  int64 total_score = 1;
+}
+
+//昨天小丑总积分
+message YesterdayBuffoonTotalScoreRequest {
+}
+
+message YesterdayBuffoonTotalScoreResponse {
+  int64 total_score = 1;
+}
+
+
+
+//昨天小丑总积分
+message BeginBuffoonRequest {
+  string  fight_buffoon_id = 1; //打小丑的id
+}
+
+message BeginBuffoonResponse {
+}
+
+
+//昨天小丑总积分
+message EndBuffoonRequest {
+  string  fight_buffoon_id = 1; //打小丑的id
+}
+
+message EndBuffoonResponse {
+}
+
+
+
+//小丑前10分钟的气球
+message BalloonsHeadEndRequest {
+  string id = 1;  //小丑的id
+  int64 total_score = 2;  //小丑的总分数
+  repeated BalloonsHeadEndItem list = 3; //
+}
+
+message BalloonsHeadEndItem {
+  string  user_id = 1; //玩家id
+  int64  total_score_battle = 2; //礼物分
+  int64  total_score_end = 3; //礼物算出的结算分
+  int32  rank = 4; //排名
+}
+
+message BalloonsHeadEndResponse {
+}

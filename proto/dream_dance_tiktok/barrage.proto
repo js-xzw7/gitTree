@@ -1,0 +1,199 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+//----------------------------------------------推玩家--------------------------
+message BarragePushUserInItem {
+  string user_id = 1; //玩家id
+  int32  on_camp = 2; //所属阵营;1:左方阵营;2:右方阵营
+  string  nickname = 3; //昵称
+  string  avatar = 4; //头像
+  int32  sex = 5; //性别;1:男;2:女
+  int64  total_score = 6; //累计积分
+  int64  total_experience = 7; //累计经验
+  int32  worldRank = 8;
+  repeated int64  current_element_nos = 9; //nos
+  int64  title_no = 10;  //标题编号
+  string cp_player_uid = 11;     // 情侣的ID,对方的用户id
+  int32 cp_married_status = 12;      // 0.无任何状态，1：订婚，2：结婚状态
+  string cp_name = 13;     // 情侣的名字
+  string cp_avatar = 14;    // 情侣对方的头像Icon
+  int64 buffoon_score = 15;    // 当天当前用户刷的小丑积分
+  repeated UserInfoItem soul_mates = 16; //知己
+  repeated UserInfoItem best_friends = 17; //死党
+  repeated PackageItemDetail  package_detail = 18; //nos
+  repeated Friend friends = 19; //好友列表
+  string Preset = 20; //预设
+  int64 emotions_no = 21;//心情
+  int64 toy = 22; // 玩具
+  repeated achievement achievement = 23;//成就id
+  repeated int64 badge = 24; //徽章列表
+
+  message petInfoItem {
+    string petName = 1; // 宠物名
+    string petNo = 2; // 宠物编号
+    string petId = 3; // 宠物id
+    string petElement = 4; // 宠物穿戴装备
+    int64 petStatus = 5; //宠物状态 1:学习 2:打工
+    int64 toDoEndTime = 6;//干活结束时间
+  }
+  petInfoItem petInfo = 25; // 已经上场的宠物
+  repeated petInfoItem petList = 26; //拥有的宠物
+}
+
+//成就
+message achievement {
+  int64 achievementId = 1;
+  int64 createdAt = 2;
+}
+
+// 好友
+message Friend {
+  string user_id = 1; //玩家id
+  string  nickname = 2; //玩家昵称
+  string avatar = 3;    // 玩家头像
+  int64 relationship = 4;//关系ship;1:关系建立中;2:兄弟;3:姐妹;4:死党;5:闺蜜;6:姐弟;7:兄妹
+  int64 created_at = 5; // 创建时间
+}
+
+//todo 陈建新：这里数据要加入碎片道具
+message PackageItemDetail {
+  int64 prop_no = 1; //道具编号
+  int32  number = 2; //道具数量
+  int64  expire_time = 3;    // 道具过期时间戳
+}
+
+message UserInfoItem {
+  string user_id = 1; //玩家id
+  string  nickname = 2; //玩家昵称
+  string avatar = 3;    // 玩家头像
+}
+
+
+//----------------------------------------------推礼物--------------------------
+message BarragePushGiftItem {
+  string  user_id = 1; //玩家id
+  int32   gift_number = 2; //礼物数量
+  string  gift_code = 3; //礼物编码编号
+}
+//----------------------------------------------推特殊内容--------------------------
+message BarragePushContentItem {
+  string  content = 1; //玩家id
+  string  user_id = 2; //礼物编码编号
+}
+//----------------------------------------------推点赞--------------------------
+message BarragePushLikeItem {
+  string  like_num = 1; //玩家id
+  string  user_id = 2; //礼物编码编号
+}
+//----------------------------------------------推点赞--------------------------
+message BarrageChangeSexItem {
+  string  content = 1; //换性别内容
+  string  user_id = 2; //礼物编码编号
+}
+
+//----------------------------------------------推艾特的--------------------------
+message BarrageTipsItem {
+  string  initiative_nickname = 1; //主动@的人
+  string  passive_nickname = 2; //被@的人
+}
+
+//----------------------------------------------影响的--------------------------
+message SpecialEffectsItem {
+  string uid_id = 1; //用户id
+  repeated int64 special_effects_id = 2; //特效id数组
+}
+
+message NewSpecialEffectsItem {
+  string uid_id = 1; //用户id
+  int64 special_effects_id = 2; //特效id
+  int64 special_effects_num = 3; //特效数量
+}
+
+message CpSpecialEffectsResponse {
+  repeated CpSpecialEffectsItem SpecialEffectsItems = 1;
+}
+
+message CpSpecialEffectsItem {
+  string user_id = 1; //用户id
+  string user_id_other = 2; //用户id
+  int64 effects_id = 3; //特效id
+  int64 effects_num = 4; //特效数量
+}
+
+message FullServiceUsers {
+  string user_name = 1; //用户名称
+  string user_avatar = 2; //用户头像
+}
+
+//message FullServiceUsersCp {
+//  string user_name_left = 1; //送礼人
+//  string user_avatar_left = 2; //用户头像
+//  string user_name_right = 3; //蹭礼物的
+//  string user_avatar_right = 4; //蹭礼物的
+//}
+
+message FullServiceUsersCp {
+  string user_id_left = 1; //送礼人
+  string user_name_left = 2; //送礼人
+  string user_avatar_left = 3; //送礼人头像
+  string user_id_right = 4; //蹭礼物的人
+  string user_name_right = 5; //蹭礼物的
+  string user_avatar_right = 6; //蹭礼物的头像
+
+  int64 props_no = 7; //道具编号
+  int64 props_expire_time = 8; //道具有效期
+  int32 props_number = 9; //道具数量
+  int32 draw_type = 10; //1.道具 2.星光值
+  int64 score = 11; //星光值分数
+}
+
+
+//----------------------------------------------汇总--------------------------
+//推礼物数据,1秒钟1次
+message BarrageResponse {
+  repeated BarragePushUserInItem  listUser = 1; //用户列表
+  repeated BarragePushGiftItem listGift = 2; //礼物列表
+  repeated BarragePushContentItem listContent = 3; //评论列表
+  repeated BarragePushLikeItem listLike = 4; //点赞列表
+  repeated BarrageChangeSexItem listChangeSex = 5; //改变性别
+  repeated string listRight = 6; //
+  repeated string listError = 7; //
+  int64  round_id = 8; //回合id
+  //  repeated string listChangeClothGroup = 9; //换个人衣服的套装的用户id  //「hxx」-换专属服装
+  repeated IndividualPoolSuitIdItem individual_pool_suit_ids = 9; //个人池的专属套装
+
+  repeated string listChangeWing = 10; //换翅膀的用户id   //「hyy」-换翅膀
+  repeated BarrageTipsItem listTips = 11; //
+  repeated string listChangeClothCommon = 12; //换个人衣服的套装的用户id 「h」-换公公池套装
+  repeated SpecialEffectsItem specialEffectsItems = 13; //用户特效
+  repeated FullServiceUsers fullServiceUserIds = 14; //全服喇叭单人
+  repeated string listActivitiesGroup = 15; //换活动套装的用户id  //「hcc」-换专属服装
+
+  repeated string listComposeGroup = 16; //组合套装列表  //「hcp」-换专属服装
+
+  repeated string listExclusiveComposeGroup = 17; //换专属组合套装得用户列表  //「hww」-换情侣服装
+  repeated string listComposeDisband = 18; //换专属组合套装得用户列表  //「hww」-换情侣服装
+
+  int64  model_id = 19; //回合id
+
+  repeated string listUserChangeHalo = 20; //套装得用户列表  //「hzz」-换光环
+
+
+  repeated FullServiceUsersCp fullServiceUserIdsCp = 21; //全服喇叭cp
+  repeated FullServiceUsersCp fullServiceUserIdsMarry = 22; //全服喇叭结婚成功
+
+
+
+  repeated FullServiceUsersCp fullServiceUserIdsSoulMate = 23; //知己喇叭
+  repeated FullServiceUsersCp fullServiceUserIdsBestFriends = 24; //死党喇叭
+  repeated FullServiceUsersCp fullServiceUserIdsFriends = 25; //新的朋友喇叭
+  repeated FullServiceUsersCp fullServiceUserIdsOrderMarryNew = 26; //全服喇叭订婚成功
+  repeated FullServiceUsersCp fullServiceUserIdsDrawPrize = 27; //抽金全服飘窗
+  repeated NewSpecialEffectsItem newSpecialEffectsItems = 28; //新用户特效
+}
+
+message IndividualPoolSuitIdItem {
+  int64 suit_id = 1; //套装ID
+  int64  expire_time = 2;    // 道具过期时间戳
+}

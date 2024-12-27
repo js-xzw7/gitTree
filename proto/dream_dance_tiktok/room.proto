@@ -1,0 +1,30 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+enum LoginType{
+  LOGIN_TYPE_UNSPECIFIED = 0; //默认的，没有指定，业务中暂时按照访客模式处理
+  LOGIN_TYPE_GUEST = 1;    //访客模式
+  LOGIN_TYPE_TOKEN = 2;   //密钥登录
+}
+
+//------------------------------------登录游戏直播间----------
+//创建直播间
+message CreateRoomRequest {
+  string token = 1; // 主播编号，会根据主播的编号，拉取直播间数据
+}
+
+//创建直播间响应
+message CreateRoomResponse {
+  int64 room_id = 1; //游戏直播间id
+}
+//------------------------------------登出游戏直播间----------
+
+message PingRequest{}
+
+message PingResponse{
+  int64 timestamp = 1;
+}
+
+
+

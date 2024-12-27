@@ -1,0 +1,241 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+//获取魅力值排行榜
+message petCharmRankRequest {}
+
+message petCharmRankResponse {
+  message userInfo {
+    string  userId = 1; //用户id
+    string  nickname = 2; //昵称
+    string  avatar = 3; //头像
+    string  petId = 4; //宠物id
+    string  petNo = 5; //宠物编号
+    int64   charm = 6; //魅力值
+    string  petName = 7; //宠物名称
+  }
+
+  repeated userInfo list = 1;
+}
+
+//宠物面板
+message petPanelRequest {
+  string userId = 1; // 用户id
+  string petId = 2; // 宠物id
+}
+
+message petPanelResponse {
+  string petName = 1; // 宠物名
+  string petNo = 2; // 宠物编号
+  int64 mood = 3;//心情值
+  int64 iq = 4;//智力值
+  int64 muscle = 5;//体力值
+  int64 growth = 6;//当月成长值
+  int64 charm = 7;//魅力值
+  int64 birthday = 8;//宠物生日
+  int64 status = 9;//宠物状态 1.学习中 2.打工中
+  int64 toDoEndTime = 10;//干活结束时间
+  string petId = 11; // 宠物id
+  int64 totalGrowth = 12;//总成长值
+  int64 giveNum = 13;//已经赠送次数
+  bool isUp = 14; // 是否上下场
+  string petElement = 15; // 宠物穿戴装备
+  int64 renameNum = 16; //已经改名次数
+}
+
+// 宠物学习，打工
+message petStudyWorkRequest{
+  string userId = 1; //用户id
+  string petId = 2; //宠物Id
+  int64  taskId = 3; //任务id
+}
+
+message petStudyWorkResponse{
+  string userId = 1; //用户id
+  string petId = 2; //宠物Id
+  int64 status = 3; //状态
+  int64 endTime = 4; //结束时间
+}
+
+// 宠物改名
+message petRenameRequest {
+  string userId = 1; //用户id
+  string petId = 2; //宠物id
+  string  name = 3; //名称
+}
+
+message petRenameResponse {
+  string userId = 1; //用户id
+  string petId = 2; //宠物id
+  string  name = 3; //名称
+}
+
+// 成长值奖励
+message petGrowthRewardRequest {
+}
+message petGrowthRewardResponse {
+  message dancePetGrowth {
+    int64 growthValue = 1;
+    string rewards = 2;
+    int64 effectiveDays = 3;
+  }
+  repeated dancePetGrowth list = 1;
+}
+
+// 送礼物加速宠物学习打工
+message petGiftSpeedPushResponse {
+  string userId = 1; //用户id
+  string petId = 2; //宠物id
+  int64  time = 3; //加速时间
+  int64 endTime = 4; //结束时间
+}
+
+message petCharmAwardRequest {}
+
+message petCharmAwardResponse {
+  message dancePetCharmRank {
+    int64 minLimit = 2;// 最小开始区间
+    int64 maxLimit = 3;// 最大开始区间
+    string rewards = 6;//发放道具nos
+    int64 effectiveDays = 7;// 有效天数
+  }
+  repeated dancePetCharmRank list = 1;
+}
+
+// 宠物体力排行榜
+message petStaminaRankRequest {}
+message petStaminaRankResponse{
+  message userInfo {
+    string  userId = 1; //用户id
+    string  nickname = 2; //昵称
+    string  avatar = 3; //头像
+    string  petId = 4; //宠物id
+    string  petNo = 5; //宠物编号
+    int64   stamina = 6; //体力值
+    string  petName = 7; //宠物名称
+  }
+
+  repeated userInfo list = 1;
+}
+
+// 宠物智力排行榜
+message petIQRankRequest {}
+message petIQRankResponse{
+  message userInfo {
+    string  userId = 1; //用户id
+    string  nickname = 2; //昵称
+    string  avatar = 3; //头像
+    string  petId = 4; //宠物id
+    string  petNo = 5; //宠物编号
+    int64   iq = 6; //iq值
+    string  petName = 7; //宠物名称
+  }
+
+  repeated userInfo list = 1;
+}
+
+// 宠物赠送魅力值
+message petGiveCharmRequest {
+  string fromPetId = 1; //赠送者宠物id
+  string toPetId = 2; //接收者宠物id
+  int64  charm = 3; //赠送的魅力值
+  string fromUserId = 4; //赠送者id
+  string toUserId = 5; //接收者id
+}
+
+message petGiveCharmResponse {
+  string fromPetId = 1; //赠送者宠物id
+  string toPetId = 2; //接收者宠物id
+  string fromUserId = 3; //赠送者id
+  string toUserId = 4; //接收者id
+}
+
+//保存宠物的装扮
+message petSaveElementRequest {
+  string userId = 1; //用户id
+  string petId = 2;// 宠物id
+  string elements = 3;//装扮
+}
+
+message petSaveElementResponse {
+}
+
+message petPlayRequest {
+  string userId = 1; //用户id
+  string petId = 2;// 宠物id
+}
+
+message petPlayResponse {
+}
+
+
+// 宠物推送
+message petPushResponse {
+  string userId = 1;
+  string petId = 2;
+  string  petNo = 3; //宠物编号
+  string petName = 4; // 宠物名字
+}
+
+
+// 用户宠物体力排行榜
+message petUserStaminaRankRequest {
+  string userId = 1;
+}
+message petUserStaminaRankResponse{
+  message userInfo {
+    string  userId = 1; //用户id
+    string  nickname = 2; //昵称
+    string  avatar = 3; //头像
+    string  petId = 4; //宠物id
+    string  petNo = 5; //宠物编号
+    int64   stamina = 6; //体力值
+    int64 rank = 7; // 排名
+    string  petName = 8; //宠物名称
+  }
+
+  repeated userInfo list = 1;
+}
+
+// 用户宠物智力排行榜
+message petUserIqRankRequest {
+  string userId = 1;
+}
+message petUserIqRankResponse{
+  message userInfo {
+    string  userId = 1; //用户id
+    string  nickname = 2; //昵称
+    string  avatar = 3; //头像
+    string  petId = 4; //宠物id
+    string  petNo = 5; //宠物编号
+    int64   iq = 6; //智力值
+    int64 rank = 7; // 排名
+    string  petName = 8; //宠物名称
+  }
+
+  repeated userInfo list = 1;
+}
+
+// 用户宠物魅力值排行榜
+message petUserCharmRankRequest {
+  string userId = 1;
+}
+message petUserCharmRankResponse{
+  message userInfo {
+    string  userId = 1; //用户id
+    string  nickname = 2; //昵称
+    string  avatar = 3; //头像
+    string  petId = 4; //宠物id
+    string  petNo = 5; //宠物编号
+    int64   charm = 6; //魅力值
+    int64 rank = 7; // 排名
+    string  petName = 8; //宠物名称
+  }
+
+  repeated userInfo list = 1;
+}
+
+
+
+

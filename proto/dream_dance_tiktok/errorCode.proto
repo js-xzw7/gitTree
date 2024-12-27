@@ -1,0 +1,27 @@
+//错误码
+
+syntax = "proto3";
+
+package game.proto;
+option go_package = "dreamDanceTiktok/proto;api";
+
+enum ErrorCode{
+  OK = 0;
+
+  //  REPEAT_LOGIN_ROOM_ID = 10001; //主播编号重复登录了，需要其他客户端先退出登录
+  //  LOGIN_MOMO_ERR = 10002; //登录陌陌服务异常, 需要重新登录，或者关闭客户端重新登录
+
+  INTERNAL_ERROR = 20001;
+  //  DATABASE_ERR = 20002;  //服务端数据库异常
+  //  PARAMS_ERR = 20003; //客户端传的参数错误
+  //  TIKTOK_PULL_ERROR = 20004; //momo拉去物料异常，需要关闭游戏重新获取直播码
+  //  TIKTOK_INTERNET_ERROR = 20005; //调用陌陌创建直播间接口异常，需要重新获取直播码，并重新登录
+  //  ErrorCode_SYSTEM_ERR       = 20006; //系统错误
+
+}
+
+message NoticeResp {
+  string user_id = 1; // 用户id
+  string Tips = 2; // 通知内容
+}
+
