@@ -1,6 +1,0 @@
-syntax = "proto3";
-import "barrage.proto";
-package game.proto;
-option go_package = "danceTwoTiktok/proto;api";
-
-

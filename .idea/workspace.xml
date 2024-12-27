@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="46a90dab-1c4c-4d07-8d52-5349b1344438" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/api/dancTwoTiktok/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dancTwoTiktok/barrage.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dancTwoTiktok/common.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dancTwoTiktok/errorCode.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dancTwoTiktok/flowerCar.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dancTwoTiktok/giftPackage.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dancTwoTiktok/mode.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dancTwoTiktok/msgId.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dancTwoTiktok/package.proto" beforeDir="false" afterPath="$PROJECT_DIR$/proto/daream_dance_tiktok/package_old.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dancTwoTiktok/room.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dancTwoTiktok/user.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dancTwoTiktok/操作.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/danceTwoTiktok/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/danceTwoTiktok/barrage.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/danceTwoTiktok/common.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/danceTwoTiktok/errorCode.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/danceTwoTiktok/flowerCar.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/danceTwoTiktok/giftPackage.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/danceTwoTiktok/mode.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/danceTwoTiktok/msgId.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/danceTwoTiktok/package.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/danceTwoTiktok/room.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/danceTwoTiktok/user.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/danceTwoTiktok/操作.md" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file://$USER_HOME$/sdk/go1.20" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2qeWiskXhF2rY1mWCLip3gdZez1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "Go 构建.go build dance_two_tiktok_ui_cli.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "git-widget-placeholder": "main",
+    "go.import.settings.migrated": "true",
+    "last_opened_file_path": "D:/test/gitTree/proto/daream_dance_tiktok",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "D:/work/dance_two_tiktok_ui_cli/main.go",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\work\dance_two_tiktok_ui_cli\gui" />
+      <recent name="D:\work\dance_two_tiktok_ui_cli\router" />
+      <recent name="D:\work\dance_two_tiktok_ui_cli" />
+      <recent name="D:\work\dance_two_tiktok_ui_cli\coon" />
+      <recent name="D:\work\dance_two_tiktok_ui_cli\proto" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\work\dance_two_tiktok_ui_cli\conf" />
+      <recent name="D:\work\dance_two_tiktok_ui_cli\proto" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="go build dance_two_tiktok_ui_cli" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+      <module name="dance_two_tiktok_ui_cli" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <package value="dance_two_tiktok_ui_cli" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-gosdk-5df93f7ad4aa-df9ad98b711f-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-242.23339.24" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-GO-242.23339.24" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>
