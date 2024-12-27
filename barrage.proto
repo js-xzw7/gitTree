@@ -1,0 +1,104 @@
+syntax = "proto3";
+package game.proto;
+option go_package = "danceTwoTiktok/proto;api";
+
+//----------------------------------------------推玩家--------------------------
+message BarragePushUserInItem {
+  string user_id = 1; //玩家id
+  string  nickname = 2; //昵称
+  string  avatar = 3; //头像
+  int32  sex = 4; //性别;1:男;2:女   //当前的性别
+  int32  pre_world_rank = 5; //上周的世界排名
+  repeated int64  boy_element_ids = 6; //个人保存的男性套装
+  repeated int64 girl_element_ids = 7; //个人保存的女性套装
+  int64 head_no = 8; //个人保存的男性套装
+  int64  current_title_id = 9;  //当前称号
+  int64  current_headbg_id = 10;  //当前单人头像框id
+  repeated PackageItemDetail  package_detail = 11; //背包
+}
+//这里数据要加入碎片道具
+message PackageItemDetail {
+  int64 prop_no = 1; //道具编号
+  int32  number = 2; //道具数量
+  int64  expire_time = 3;    // 道具过期时间戳
+}
+
+//----------------------------------------------推礼物--------------------------
+message BarragePushGiftItem {
+  string  user_id = 1; //玩家id
+  int32   gift_number = 2; //礼物数量
+  int32  gift_code = 3; //礼物编码编号
+}
+//----------------------------------------------推特殊内容--------------------------
+message BarragePushContentItem {
+  string  content = 1; //评论内容
+  string  user_id = 2; //玩家id
+}
+//----------------------------------------------推点赞--------------------------
+message BarragePushLikeItem {
+  string  like_num = 1; //玩家id
+  string  user_id = 2; //礼物编码编号
+}
+//----------------------------------------------特效队列--------------------------
+message SpecialEffectsDetailItem {
+  int32 gift_id = 1; //礼物id
+  int32  gift_count = 2; //礼物数量
+
+
+}
+message SpecialEffectsItem {
+  string uid_id = 1; //用户id
+  repeated   SpecialEffectsDetailItem  list = 2; //补发特效
+}
+
+//----------------------------------------------汇总--------------------------
+//推礼物数据,1秒钟1次
+message BarrageUserResponse {
+  repeated BarragePushUserInItem  listUser = 1; //用户列表
+}
+//推礼物数据,1秒钟1次
+message BarrageGiftResponse {
+  repeated BarragePushGiftItem listGift = 1; //礼物列表
+}
+//推礼物数据,1秒钟1次
+message BarrageContentResponse {
+  repeated BarragePushContentItem listContent = 1; //评论列表
+}
+//推礼物数据,1秒钟1次
+message BarrageLikeResponse {
+  repeated BarragePushLikeItem listLike = 1; //点赞列表
+}
+message BarrageSpecialEffectsItemResponse {
+  repeated SpecialEffectsItem specialEffectsItems = 1; //用户特效
+}
+
+
+//用户所在花车，最近累计积分
+message BarrageUserFlowerScoreResponse {
+  repeated BarrageUserFlowerScoreItem list = 1;
+}
+message BarrageUserFlowerScoreItem {
+  string  user_id = 1; //用户
+  string  user_id_other = 2; //用户
+  int64  flower_score = 3; //累计花车积分
+}
+
+//用户所在局当前局，最近累计积分
+message BarrageUserScoreResponse {
+  repeated BarrageUserScoreItem list = 1;
+
+}
+message BarrageUserScoreItem {
+  string  user_id = 1; //礼物编码编号
+  int64  current_model_score = 2; //礼物数量
+}
+
+
+//用户所在局当前局，cp累计积分
+message BarrageCpUserScoreResponse {
+  string  user_id_left = 1; //当局用户1的id
+  int64   current_model_left_score = 2; //当局用户1的cp个人贡献积分
+  string  user_id_right = 3; //当局用户2的id
+  int64   current_model_right_score = 4; //当局用户2的贡献积分
+  int64   current_model_total_score = 5; //当局cp的总积分
+}
